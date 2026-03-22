@@ -14,7 +14,7 @@ The goal of the project is to bridge the gap between expensive hotels and unreli
 - Nardos — DevOps/Admin + Integration Support
   
 ## Design Board
-[Figma Design Board](PASTE_YOUR_FIGMA_LINK_HERE)
+[Figma Design Board](https://www.figma.com/design/0BHhZVXujSHfKlJZS1aEaI/Untitled?node-id=32-117&t=XotPOj1P2wbfkJnQ-0)
 
 ## Project Board
 [Jira Project Board](PASTE_YOUR_JIRA_LINK_HERE)
