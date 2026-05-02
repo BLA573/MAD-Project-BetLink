@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Screen and section spacing -->
+    <dimen name="padding_screen">20dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="margin_xlarge">32dp</dimen>
+
+    <!-- Card and control sizes -->
+    <dimen name="card_padding">18dp</dimen>
+    <dimen name="corner_radius">16dp</dimen>
+    <!-- Primary button target height (large, thumb-friendly) -->
+    <dimen name="button_height">56dp</dimen>
+    <!-- Minimum touch target for smaller controls (48dp recommended) -->
+    <dimen name="touch_min">48dp</dimen>
+    <!-- Horizontal padding used for pill/chip and buttons -->
+    <dimen name="control_horizontal_padding">14dp</dimen>
+    <dimen name="hero_height">196dp</dimen>
+    <dimen name="pill_horizontal">12dp</dimen>
+    <dimen name="pill_vertical">6dp</dimen>
+
+    <!-- Typography sizes -->
+    <dimen name="text_h1">24sp</dimen>
+    <dimen name="text_h2">18sp</dimen>
+    <dimen name="text_body">15sp</dimen>
+</resources>
+
+

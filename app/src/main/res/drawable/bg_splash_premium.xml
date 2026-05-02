@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Pure, clean base -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" />
+        </shape>
+    </item>
+
+    <!-- Very subtle top-to-bottom gradient for "airiness" -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:endColor="#FAFCFF"
+                android:startColor="#FFFFFF"
+                android:type="linear" />
+        </shape>
+    </item>
+
+    <!-- Center ambient glow to draw eye to the logo -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:centerX="50%"
+                android:centerY="50%"
+                android:gradientRadius="45%p"
+                android:startColor="#0D1E40AF"
+                android:endColor="#00FFFFFF"
+                android:type="radial" />
+        </shape>
+    </item>
+
+    <!-- Elegant bottom-right depth -->
+    <item android:bottom="-150dp" android:right="-150dp">
+        <shape android:shape="oval">
+            <size android:width="500dp" android:height="500dp" />
+            <solid android:color="#031E40AF" />
+        </shape>
+    </item>
+</layer-list>

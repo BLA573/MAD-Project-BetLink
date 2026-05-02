@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/surface"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarAvailability"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@android:drawable/ic_menu_revert"
+            app:title="Manage Availability"
+            app:titleTextColor="@color/text_primary" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Calendar Section -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/stroke">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textMonthYear"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="May 2026"
+                            android:textColor="@color/text_primary"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <ImageButton
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:src="@android:drawable/ic_media_previous"
+                            app:tint="@color/text_secondary" />
+
+                        <ImageButton
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:src="@android:drawable/ic_media_next"
+                            app:tint="@color/text_secondary" />
+                    </LinearLayout>
+
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:columnCount="7">
+
+                        <TextView style="@style/CalendarDayHeader" android:text="S"/>
+                        <TextView style="@style/CalendarDayHeader" android:text="M"/>
+                        <TextView style="@style/CalendarDayHeader" android:text="T"/>
+                        <TextView style="@style/CalendarDayHeader" android:text="W"/>
+                        <TextView style="@style/CalendarDayHeader" android:text="T"/>
+                        <TextView style="@style/CalendarDayHeader" android:text="F"/>
+                        <TextView style="@style/CalendarDayHeader" android:text="S"/>
+
+                        <!-- Mock dates with different states -->
+                        <TextView style="@style/CalendarDate" android:text="26" android:alpha="0.3"/>
+                        <TextView style="@style/CalendarDate" android:text="27" android:alpha="0.3"/>
+                        <TextView style="@style/CalendarDate" android:text="28" android:alpha="0.3"/>
+                        <TextView style="@style/CalendarDate" android:text="29" android:alpha="0.3"/>
+                        <TextView style="@style/CalendarDate" android:text="30" android:alpha="0.3"/>
+                        <TextView style="@style/CalendarDate" android:text="1" />
+                        <TextView style="@style/CalendarDate" android:text="2" />
+                        <TextView style="@style/CalendarDate" android:text="3" />
+                        <TextView style="@style/CalendarDate.Booked" android:text="4" />
+                        <TextView style="@style/CalendarDate.Booked" android:text="5" />
+                        <TextView style="@style/CalendarDate.Booked" android:text="6" />
+                        <TextView style="@style/CalendarDate" android:text="7" />
+                        <TextView style="@style/CalendarDate" android:text="8" />
+                        <TextView style="@style/CalendarDate" android:text="9" />
+                        <TextView style="@style/CalendarDate" android:text="10" />
+                        <TextView style="@style/CalendarDate.Blocked" android:text="11" />
+                        <TextView style="@style/CalendarDate.Blocked" android:text="12" />
+                        <TextView style="@style/CalendarDate" android:text="13" />
+                        <TextView style="@style/CalendarDate" android:text="14" />
+                        <TextView style="@style/CalendarDate" android:text="15" />
+                        <TextView style="@style/CalendarDate" android:text="16" />
+                        <TextView style="@style/CalendarDate" android:text="17" />
+                        <TextView style="@style/CalendarDate" android:text="18" />
+                        <TextView style="@style/CalendarDate" android:text="19" />
+                        <TextView style="@style/CalendarDate" android:text="20" />
+                        <TextView style="@style/CalendarDate" android:text="21" />
+                        <TextView style="@style/CalendarDate" android:text="22" />
+                        <TextView style="@style/CalendarDate" android:text="23" />
+                        <TextView style="@style/CalendarDate" android:text="24" />
+                        <TextView style="@style/CalendarDate" android:text="25" />
+                        <TextView style="@style/CalendarDate" android:text="26" />
+                        <TextView style="@style/CalendarDate" android:text="27" />
+                        <TextView style="@style/CalendarDate" android:text="28" />
+                        <TextView style="@style/CalendarDate" android:text="29" />
+                        <TextView style="@style/CalendarDate" android:text="30" />
+                    </GridLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+                        <View android:layout_width="12dp" android:layout_height="12dp" android:background="@drawable/pill_bg" android:backgroundTint="@color/host_tint"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" Booked" android:textSize="11sp" android:textColor="@color/text_secondary" android:textStyle="bold"/>
+                        <View android:layout_width="12dp" android:layout_height="12dp" android:layout_marginStart="16dp" android:background="@drawable/pill_bg" android:backgroundTint="#FEE2E2"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" Blocked" android:textSize="11sp" android:textColor="@color/text_secondary" android:textStyle="bold"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Quick Management -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Date Actions"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonBlockDates"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Block Selection"
+                    android:textAllCaps="false"
+                    android:textColor="@color/danger"
+                    app:strokeColor="@color/danger"
+                    app:cornerRadius="12dp" />
+                <View android:layout_width="12dp" android:layout_height="0dp" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonUnblockDates"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Open Selection"
+                    android:textAllCaps="false"
+                    android:textColor="@color/host_primary"
+                    app:strokeColor="@color/host_primary"
+                    app:cornerRadius="12dp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Pricing &amp; Notes"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editDailyRate"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/input_bg"
+                android:hint="Adjust daily rate (ETB)"
+                android:inputType="number"
+                android:paddingHorizontal="20dp"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_hint"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editAvailabilityNote"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/input_bg"
+                android:gravity="top"
+                android:hint="Internal note (e.g. Renovation)"
+                android:inputType="textMultiLine"
+                android:padding="16dp"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_hint"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonSaveAvailability"
+                style="@style/Widget.BetLink.Button.Host"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="40dp"
+                android:text="Apply to Selected Dates"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

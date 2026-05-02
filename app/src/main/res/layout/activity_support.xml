@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_screen"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.BetLink.H1"
+        android:text="@string/support"
+        android:textColor="@color/text_primary" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Search help"
+        android:background="@drawable/input_bg"
+        android:paddingLeft="@dimen/control_horizontal_padding"
+        android:paddingRight="@dimen/control_horizontal_padding"
+        android:paddingTop="@dimen/pill_vertical"
+        android:paddingBottom="@dimen/pill_vertical"
+        android:textColor="@color/text_primary"
+        android:textColorHint="@color/text_hint" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerSupport"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp" />
+
+</LinearLayout>

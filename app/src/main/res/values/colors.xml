@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Core brand palette -->
+    <color name="brand_primary">#1E40AF</color>
+    <color name="brand_primary_variant">#1E3A8A</color>
+    <color name="brand_accent">#B45309</color> <!-- Darkened from #F59E0B for better contrast on white -->
+
+    <!-- Role accents -->
+    <color name="traveler_tint">#E8EEFF</color>
+    <color name="host_primary">#0F766E</color>
+    <color name="host_tint">#E7F6F4</color>
+
+    <!-- Surfaces & backgrounds -->
+    <color name="background">#F3F6FB</color>
+    <color name="surface">#FFFFFFFF</color>
+    <color name="surface_alt">#F8FAFC</color>
+    <color name="stroke">#94A3B8</color> <!-- Darkened for better definition of fields -->
+
+    <!-- Text - Optimized for maximum contrast and readability -->
+    <color name="text_primary">#000000</color>
+    <color name="text_secondary">#111827</color> <!-- Much darker (almost black) for better readability -->
+    <color name="text_hint">#4B5563</color> <!-- Darker gray for placeholders -->
+
+    <!-- Utility -->
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="danger">#DC2626</color>
+</resources>

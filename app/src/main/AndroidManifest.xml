@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BetLink">
+
+        <!-- Launch Screen -->
+        <activity
+            android:name=".common.SplashActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.BetLink.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Main Hub -->
+        <activity
+            android:name=".common.MainActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.BetLink.Main" />
+
+        <!-- Auth Flow -->
+        <activity android:name=".auth.LoginActivity" android:exported="false" />
+
+        <!-- Traveler Flow -->
+        <activity android:name=".traveler.SearchActivity" android:exported="false" />
+        <activity android:name=".traveler.ListingDetailsActivity" android:exported="false" />
+        <activity android:name=".traveler.BookingStatusActivity" android:exported="false" />
+        <activity android:name=".traveler.MyBookingsActivity" android:exported="false" />
+
+        <!-- Host Flow -->
+        <activity android:name=".host.HostDashboardActivity" android:exported="false" />
+        <activity android:name=".host.HostOnboardingActivity" android:exported="false" />
+        <activity android:name=".host.HostOverviewActivity" android:exported="false" />
+        <activity android:name=".host.AvailabilityCalendarActivity" android:exported="false" />
+        <activity android:name=".host.AddListingActivity" android:exported="false" />
+
+        <!-- Shared/Common Activities -->
+        <activity android:name=".common.ProfileActivity" android:exported="false" />
+        <activity android:name=".host.ManageBookingsActivity" android:exported="false" />
+        <activity android:name=".host.ListingPreviewActivity" android:exported="false" />
+        <activity android:name=".common.MessagesActivity" android:exported="false" />
+        <activity android:name=".common.MessageDetailActivity" android:exported="false" />
+        <activity android:name=".host.AnalyticsActivity" android:exported="false" />
+
+    </application>
+
+</manifest>

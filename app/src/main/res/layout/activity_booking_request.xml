@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding_screen"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.BetLink.H1"
+            android:text="Request Booking"
+            android:textColor="@color/text_primary" />
+
+        <TextView
+            android:id="@+id/summaryProperty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:textColor="@color/text_secondary"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/inputCheckInNew"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:hint="@string/select_dates"
+            android:background="@drawable/input_bg"
+            android:paddingLeft="@dimen/control_horizontal_padding"
+            android:paddingRight="@dimen/control_horizontal_padding"
+            android:paddingTop="@dimen/pill_vertical"
+            android:paddingBottom="@dimen/pill_vertical"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_hint" />
+
+        <EditText
+            android:id="@+id/inputGuests"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/guests"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@drawable/input_bg"
+            android:paddingLeft="@dimen/control_horizontal_padding"
+            android:paddingRight="@dimen/control_horizontal_padding"
+            android:paddingTop="@dimen/pill_vertical"
+            android:paddingBottom="@dimen/pill_vertical"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_hint" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            style="@style/TextAppearance.BetLink.Body"
+            android:text="@string/price_breakdown"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonRequestNow"
+            style="@style/Widget.BetLink.Button"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:text="@string/book_now"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/brand_primary" />
+
+    </LinearLayout>
+</ScrollView>
