@@ -118,7 +118,7 @@
     <string name="booking_status_support">Track host response and next steps in one place.</string>
     <string name="booking_not_found">Booking not found.</string>
     <string name="booking_id_value">Booking ID: %1$d</string>
-    <string name="booking_title">%1$s requested Listing #%2$d</string>
+    <string name="booking_title">%1$s requested Listing #%2$s</string>
     <string name="booking_dates">%1$s to %2$s</string>
     <string name="booking_status_value">Status: %1$s</string>
     <string name="refresh_status">Refresh Status</string>

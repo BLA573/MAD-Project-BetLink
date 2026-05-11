@@ -21,6 +21,7 @@ public class AuthViewModel extends ViewModel {
     private final MutableLiveData<Boolean>      isLoading   = new MutableLiveData<>(false);
     private final MutableLiveData<AuthResponse> authSuccess = new MutableLiveData<>();
     private final MutableLiveData<String>       errorMessage = new MutableLiveData<>();
+    private final MutableLiveData<String>       infoMessage = new MutableLiveData<>();
 
     // -------------------------------------------------------------------------
     // Exposed LiveData
@@ -29,6 +30,7 @@ public class AuthViewModel extends ViewModel {
     public LiveData<Boolean>      getIsLoading()    { return isLoading;    }
     public LiveData<AuthResponse> getAuthSuccess()  { return authSuccess;  }
     public LiveData<String>       getErrorMessage() { return errorMessage; }
+    public LiveData<String>       getInfoMessage()  { return infoMessage;  }
 
     // -------------------------------------------------------------------------
     // Login
@@ -57,17 +59,21 @@ public class AuthViewModel extends ViewModel {
     // Sign-up
     // -------------------------------------------------------------------------
 
-    public void signUp(String email, String password,
+    public void signUp(String email, String phone, String password,
                        String fullName, String role) {
 
         if (fullName == null || fullName.trim().isEmpty()) {
             errorMessage.setValue("Full name is required.");
             return;
         }
+        if (phone == null || phone.trim().isEmpty()) {
+            errorMessage.setValue("Phone number is required.");
+            return;
+        }
         if (!validate(email, password)) return;
 
         isLoading.setValue(true);
-        repository.signUp(email.trim(), password, fullName.trim(), role,
+        repository.signUp(email.trim(), phone.trim(), password, fullName.trim(), role,
             new UserRepository.AuthCallback() {
                 @Override
                 public void onSuccess(AuthResponse response) {
@@ -83,17 +89,47 @@ public class AuthViewModel extends ViewModel {
             });
     }
 
+    public void recoverPassword(String email) {
+        if (email == null || email.trim().isEmpty()
+                || !android.util.Patterns.EMAIL_ADDRESS.matcher(email.trim()).matches()) {
+            errorMessage.setValue("Enter your account email first.");
+            return;
+        }
+
+        isLoading.setValue(true);
+        repository.recoverPassword(email.trim(), new UserRepository.SimpleCallback() {
+            @Override
+            public void onSuccess() {
+                isLoading.setValue(false);
+                infoMessage.setValue("Password reset instructions sent to your email.");
+            }
+
+            @Override
+            public void onError(String message) {
+                isLoading.setValue(false);
+                errorMessage.setValue(message);
+            }
+        });
+    }
+
     // -------------------------------------------------------------------------
     // Helpers
     // -------------------------------------------------------------------------
 
-    private boolean validate(String email, String password) {
-        if (email == null || email.trim().isEmpty()) {
-            errorMessage.setValue("Email is required.");
+    private boolean validate(String identifier, String password) {
+        if (identifier == null || identifier.trim().isEmpty()) {
+            errorMessage.setValue("Email or phone is required.");
             return false;
         }
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email.trim()).matches()) {
+        String value = identifier.trim();
+        boolean looksLikeEmail = value.contains("@");
+        boolean looksLikePhone = value.startsWith("+") && value.length() >= 10;
+        if (looksLikeEmail && !android.util.Patterns.EMAIL_ADDRESS.matcher(value).matches()) {
             errorMessage.setValue("Enter a valid email address.");
+            return false;
+        }
+        if (!looksLikeEmail && !looksLikePhone) {
+            errorMessage.setValue("Use a valid email or phone with country code, e.g. +251...");
             return false;
         }
         if (password == null || password.length() < 6) {

@@ -3,6 +3,7 @@ package com.example.betlink.traveler;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -49,6 +50,20 @@ public class SearchActivity extends AppCompatActivity {
         viewModel.getListings().observe(this, listings -> {
             adapter.submitList(listings);
             binding.textResultCount.setText(getString(R.string.result_count, listings.size()));
+            binding.textSearchState.setVisibility(listings.isEmpty() ? View.VISIBLE : View.GONE);
+            binding.textSearchState.setText("No matching stays yet. Try a wider location or budget.");
+        });
+
+        viewModel.getIsLoading().observe(this, isLoading -> {
+            binding.progressSearch.setVisibility(isLoading ? View.VISIBLE : View.GONE);
+            binding.buttonApplyFilters.setEnabled(!isLoading);
+        });
+
+        viewModel.getError().observe(this, error -> {
+            if (error != null) {
+                binding.textSearchState.setVisibility(View.VISIBLE);
+                binding.textSearchState.setText("Network issue: " + error);
+            }
         });
 
         binding.buttonApplyFilters.setOnClickListener(v -> performSearch());
@@ -69,7 +84,7 @@ public class SearchActivity extends AppCompatActivity {
             if (itemId == R.id.nav_explore) {
                 return true;
             } else if (itemId == R.id.nav_bookings) {
-                Intent intent = new Intent(this, BookingStatusActivity.class);
+                Intent intent = new Intent(this, MyBookingsActivity.class);
                 intent.putExtra(LoginActivity.EXTRA_TRAVELER_NAME, travelerName);
                 startActivity(intent);
                 return true;

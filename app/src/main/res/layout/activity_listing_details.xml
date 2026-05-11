@@ -270,6 +270,14 @@
                 android:textStyle="bold"
                 tools:text="Total: 700 ETB per night" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonViewReviews"
+                style="@style/Widget.BetLink.Button.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/details_reviews" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

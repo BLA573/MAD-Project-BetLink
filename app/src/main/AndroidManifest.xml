@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".common.BetLinkApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -33,12 +36,14 @@
 
         <!-- Auth Flow -->
         <activity android:name=".auth.LoginActivity" android:exported="false" />
+        <activity android:name=".auth.SignUpActivity" android:exported="false" />
 
         <!-- Traveler Flow -->
         <activity android:name=".traveler.SearchActivity" android:exported="false" />
         <activity android:name=".traveler.ListingDetailsActivity" android:exported="false" />
         <activity android:name=".traveler.BookingStatusActivity" android:exported="false" />
         <activity android:name=".traveler.MyBookingsActivity" android:exported="false" />
+        <activity android:name=".traveler.ReviewsActivity" android:exported="false" />
 
         <!-- Host Flow -->
         <activity android:name=".host.HostDashboardActivity" android:exported="false" />

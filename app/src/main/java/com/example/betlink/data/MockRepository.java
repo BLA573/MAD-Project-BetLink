@@ -30,7 +30,7 @@ public class MockRepository {
 
     private void seedListings() {
         listings.add(new Listing(
-                1,
+                "1", "host-1",
                 "Campus Budget Room",
                 "Hawassa",
                 "Near Hawassa University",
@@ -41,10 +41,10 @@ public class MockRepository {
                 "Free cancellation up to 12 hours before check-in.",
                 4.8f,
                 "Single Room",
-                true
+                new ArrayList<>()
         ));
         listings.add(new Listing(
-                2,
+                "2", "host-2",
                 "Transit Rest House",
                 "Adama",
                 "2 minutes from bus station",
@@ -55,10 +55,10 @@ public class MockRepository {
                 "50% refund for cancellations up to 6 hours before check-in.",
                 4.2f,
                 "Studio",
-                true
+                new ArrayList<>()
         ));
         listings.add(new Listing(
-                3,
+                "3", "host-3",
                 "Verified Family Guesthouse",
                 "Bahir Dar",
                 "Close to city center",
@@ -69,14 +69,13 @@ public class MockRepository {
                 "Full refund up to 24 hours before check-in.",
                 4.9f,
                 "Full House",
-                true
+                new ArrayList<>()
         ));
     }
 
     private void seedBookings() {
-        createBookingRequest(1, "Solomon K.", "2026-05-12", "2026-05-14");
-        createBookingRequest(3, "Martha S.", "2026-06-01", "2026-06-05");
-        updateBookingStatus(1002, BookingRequest.STATUS_APPROVED);
+        createBookingRequest("1", "traveler-1", "2026-05-12", "2026-05-14");
+        createBookingRequest("3", "traveler-2", "2026-06-01", "2026-06-05");
     }
 
     private void seedMessages() {
@@ -117,22 +116,22 @@ public class MockRepository {
         listings.add(0, listing);
     }
 
-    public void updateListingPrice(int id, int newPrice) {
+    public void updateListingPrice(String id, int newPrice) {
         Listing listing = getListingById(id);
         if (listing != null) {
             int index = listings.indexOf(listing);
             Listing updated = new Listing(
-                listing.getId(), listing.getTitle(), listing.getCity(), listing.getLandmark(),
+                listing.getId(), listing.getHostId(), listing.getTitle(), listing.getCity(), listing.getLandmark(),
                 newPrice, listing.isVerified(), listing.getAmenities(), listing.getDescription(),
-                listing.getCancellationRule(), listing.getRating(), listing.getRoomType(),
-                listing.isAvailable(), listing.getImages()
+                listing.getCancellationRule(), listing.getAvgRating(), listing.getRoomType(),
+                listing.getImageUrls()
             );
             listings.set(index, updated);
         }
     }
 
-    public int getNextListingId() {
-        return listingIdCounter.incrementAndGet();
+    public String getNextListingId() {
+        return String.valueOf(listingIdCounter.incrementAndGet());
     }
 
     public List<Listing> searchListings(String query, int maxPrice, boolean verifiedOnly) {
@@ -155,9 +154,9 @@ public class MockRepository {
         return result;
     }
 
-    public Listing getListingById(int listingId) {
+    public Listing getListingById(String listingId) {
         for (Listing listing : listings) {
-            if (listing.getId() == listingId) {
+            if (listingId.equals(listing.getId())) {
                 return listing;
             }
         }
@@ -165,15 +164,15 @@ public class MockRepository {
     }
 
     public BookingRequest createBookingRequest(
-            int listingId,
-            String travelerName,
+            String listingId,
+            String travelerId,
             String checkInDate,
             String checkOutDate
     ) {
         BookingRequest request = new BookingRequest(
-                bookingIdCounter.incrementAndGet(),
+                String.valueOf(bookingIdCounter.incrementAndGet()),
                 listingId,
-                travelerName,
+                travelerId,
                 checkInDate,
                 checkOutDate,
                 BookingRequest.STATUS_PENDING
@@ -182,9 +181,9 @@ public class MockRepository {
         return request;
     }
 
-    public BookingRequest getBookingById(int bookingId) {
+    public BookingRequest getBookingById(String bookingId) {
         for (BookingRequest request : bookingRequests) {
-            if (request.getId() == bookingId) {
+            if (request.getId().equals(bookingId)) {
                 return request;
             }
         }
@@ -195,7 +194,7 @@ public class MockRepository {
         return new ArrayList<>(bookingRequests);
     }
 
-    public void updateBookingStatus(int bookingId, String newStatus) {
+    public void updateBookingStatus(String bookingId, String newStatus) {
         BookingRequest request = getBookingById(bookingId);
         if (request != null) {
             request.setStatus(newStatus);

@@ -57,7 +57,8 @@ public class ListingPreviewActivity extends AppCompatActivity {
             // Save to repository
             MockRepository repo = MockRepository.getInstance();
             Listing newListing = new Listing(
-                    repo.getNextListingId(),
+                    String.valueOf(repo.getNextListingId()),
+                    "mock-host-id",
                     title,
                     city != null ? city : "Unknown",
                     landmark != null ? landmark : "Unknown",
@@ -68,7 +69,6 @@ public class ListingPreviewActivity extends AppCompatActivity {
                     "Flexible cancellation",
                     0.0f,
                     roomType,
-                    true,
                     imagePath != null ? Collections.singletonList(imagePath) : new ArrayList<>()
             );
             repo.addListing(newListing);

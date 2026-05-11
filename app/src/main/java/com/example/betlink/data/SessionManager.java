@@ -13,8 +13,10 @@ public class SessionManager {
     private static final String KEY_TOKEN    = "access_token";
     private static final String KEY_USER_ID  = "user_id";
     private static final String KEY_EMAIL    = "user_email";
+    private static final String KEY_PHONE    = "user_phone";
     private static final String KEY_NAME     = "user_name";
     private static final String KEY_ROLE     = "user_role";
+    private static final String KEY_PROFILE_IMAGE_URI = "profile_image_uri";
 
     private static SessionManager instance;
     private SharedPreferences prefs;
@@ -42,11 +44,17 @@ public class SessionManager {
 
     public void saveSession(String accessToken, String userId, String email,
                             String fullName, String role) {
+        saveSession(accessToken, userId, email, null, fullName, role);
+    }
+
+    public void saveSession(String accessToken, String userId, String email,
+                            String phone, String fullName, String role) {
         ensureInit();
         prefs.edit()
              .putString(KEY_TOKEN,   accessToken)
              .putString(KEY_USER_ID, userId)
              .putString(KEY_EMAIL,   email)
+             .putString(KEY_PHONE,   phone)
              .putString(KEY_NAME,    fullName)
              .putString(KEY_ROLE,    role)
              .apply();
@@ -81,6 +89,11 @@ public class SessionManager {
         return prefs.getString(KEY_EMAIL, null);
     }
 
+    public String getUserPhone() {
+        ensureInit();
+        return prefs.getString(KEY_PHONE, null);
+    }
+
     public String getUserName() {
         ensureInit();
         String name = prefs.getString(KEY_NAME, null);
@@ -90,6 +103,16 @@ public class SessionManager {
     public String getUserRole() {
         ensureInit();
         return prefs.getString(KEY_ROLE, "Traveler");
+    }
+
+    public void saveProfileImageUri(String imageUri) {
+        ensureInit();
+        prefs.edit().putString(KEY_PROFILE_IMAGE_URI, imageUri).apply();
+    }
+
+    public String getProfileImageUri() {
+        ensureInit();
+        return prefs.getString(KEY_PROFILE_IMAGE_URI, null);
     }
 
     // -------------------------------------------------------------------------

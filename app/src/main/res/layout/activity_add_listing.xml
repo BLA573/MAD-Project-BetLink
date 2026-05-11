@@ -263,8 +263,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginTop="40dp"
-                android:text="Preview Listing"
+                android:text="Publish Listing"
                 android:textColor="@color/white" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:visibility="gone"
+                android:indeterminateTint="@color/host_primary" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

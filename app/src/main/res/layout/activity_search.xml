@@ -157,6 +157,25 @@
                 android:textStyle="bold"
                 tools:text="3 properties found" />
 
+            <ProgressBar
+                android:id="@+id/progressSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="18dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/textSearchState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:textColor="@color/text_secondary"
+                android:textStyle="bold"
+                android:visibility="gone"
+                tools:text="No stays found." />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerListings"
                 android:layout_width="match_parent"

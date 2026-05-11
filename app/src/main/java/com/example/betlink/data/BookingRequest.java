@@ -1,43 +1,69 @@
 package com.example.betlink.data;
 
+import com.google.gson.annotations.SerializedName;
+
 public class BookingRequest {
     public static final String STATUS_PENDING = "Pending";
     public static final String STATUS_APPROVED = "Approved";
     public static final String STATUS_REJECTED = "Rejected";
 
-    private final int id;
-    private final int listingId;
-    private final String travelerName;
-    private final String checkInDate;
-    private final String checkOutDate;
+    @SerializedName("id")
+    private String id;
+
+    @SerializedName("listing_id")
+    private String listingId;
+
+    @SerializedName("traveler_id")
+    private String travelerId;
+
+    @SerializedName("check_in_date")
+    private String checkInDate;
+
+    @SerializedName("check_out_date")
+    private String checkOutDate;
+
+    @SerializedName("status")
     private String status;
 
+    public BookingRequest() {
+    }
+
     public BookingRequest(
-            int id,
-            int listingId,
-            String travelerName,
+            String listingId,
+            String travelerId,
+            String checkInDate,
+            String checkOutDate,
+            String status
+    ) {
+        this(null, listingId, travelerId, checkInDate, checkOutDate, status);
+    }
+
+    public BookingRequest(
+            String id,
+            String listingId,
+            String travelerId,
             String checkInDate,
             String checkOutDate,
             String status
     ) {
         this.id = id;
         this.listingId = listingId;
-        this.travelerName = travelerName;
+        this.travelerId = travelerId;
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
         this.status = status;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public int getListingId() {
+    public String getListingId() {
         return listingId;
     }
 
-    public String getTravelerName() {
-        return travelerName;
+    public String getTravelerId() {
+        return travelerId;
     }
 
     public String getCheckInDate() {
@@ -56,4 +82,3 @@ public class BookingRequest {
         this.status = status;
     }
 }
-

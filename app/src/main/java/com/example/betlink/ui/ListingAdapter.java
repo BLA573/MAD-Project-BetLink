@@ -55,8 +55,8 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ListingV
         
         holder.verifiedBadge.setVisibility(listing.isVerified() ? View.VISIBLE : View.GONE);
         
-        if (listing.getImages() != null && !listing.getImages().isEmpty()) {
-            String path = listing.getImages().get(0);
+        if (listing.getImageUrls() != null && !listing.getImageUrls().isEmpty()) {
+            String path = listing.getImageUrls().get(0);
             Object source = (path.startsWith("/") || path.startsWith("content://")) ? new File(path) : path;
             if (path.startsWith("content://")) source = android.net.Uri.parse(path);
             else if (path.startsWith("/")) source = new File(path);

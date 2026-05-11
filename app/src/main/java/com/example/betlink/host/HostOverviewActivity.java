@@ -1,26 +1,32 @@
 package com.example.betlink.host;
-import com.example.betlink.R;
 
+import com.example.betlink.R;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.betlink.data.MockRepository;
+import com.example.betlink.common.ProfileActivity;
 import com.example.betlink.databinding.ActivityHostOverviewBinding;
 import com.example.betlink.ui.ListingAdapter;
+import com.example.betlink.ui.viewmodels.HostDashboardViewModel;
 
 public class HostOverviewActivity extends AppCompatActivity {
 
     private ActivityHostOverviewBinding binding;
     private ListingAdapter adapter;
+    private HostDashboardViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityHostOverviewBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        viewModel = new ViewModelProvider(this).get(HostDashboardViewModel.class);
 
         adapter = new ListingAdapter(listing -> {
             // Edit listing flow could go here
@@ -33,6 +39,23 @@ public class HostOverviewActivity extends AppCompatActivity {
             startActivity(new Intent(this, AddListingActivity.class));
         });
 
+        setupNavigation();
+        observeViewModel();
+        
+        viewModel.loadStats();
+    }
+
+    private void observeViewModel() {
+        viewModel.getHostListings().observe(this, listings -> {
+            adapter.submitList(listings);
+        });
+
+        viewModel.getIsLoading().observe(this, isLoading -> {
+            // Future: Show a refresh indicator or spinner here
+        });
+    }
+
+    private void setupNavigation() {
         binding.bottomNavigation.setSelectedItemId(R.id.nav_host_listings);
         binding.bottomNavigation.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
@@ -50,17 +73,11 @@ public class HostOverviewActivity extends AppCompatActivity {
             }
             return false;
         });
-        
-        refreshListings();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        refreshListings();
-    }
-
-    private void refreshListings() {
-        adapter.submitList(MockRepository.getInstance().getListings());
+        viewModel.loadStats();
     }
 }

@@ -24,12 +24,16 @@ public class AuthResponse {
         @SerializedName("email")
         private String email;
 
+        @SerializedName("phone")
+        private String phone;
+
         /** Supabase stores custom metadata in user_metadata when signing up */
         @SerializedName("user_metadata")
         private UserMetadata userMetadata;
 
         public String getId()    { return id; }
         public String getEmail() { return email; }
+        public String getPhone() { return phone != null ? phone : getMetadataPhone(); }
 
         public String getFullName() {
             return userMetadata != null ? userMetadata.fullName : null;
@@ -37,6 +41,10 @@ public class AuthResponse {
 
         public String getRole() {
             return userMetadata != null ? userMetadata.role : null;
+        }
+
+        private String getMetadataPhone() {
+            return userMetadata != null ? userMetadata.phone : null;
         }
     }
 
@@ -46,5 +54,8 @@ public class AuthResponse {
 
         @SerializedName("role")
         public String role;
+
+        @SerializedName("phone")
+        public String phone;
     }
 }

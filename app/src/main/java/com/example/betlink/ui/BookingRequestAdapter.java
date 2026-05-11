@@ -25,9 +25,15 @@ public class BookingRequestAdapter extends RecyclerView.Adapter<BookingRequestAd
 
     private final List<BookingRequest> items = new ArrayList<>();
     private final OnBookingActionListener listener;
+    private final boolean showActions;
 
     public BookingRequestAdapter(OnBookingActionListener listener) {
+        this(listener, listener != null);
+    }
+
+    public BookingRequestAdapter(OnBookingActionListener listener, boolean showActions) {
         this.listener = listener;
+        this.showActions = showActions;
     }
 
     public void submitList(List<BookingRequest> requests) {
@@ -49,7 +55,7 @@ public class BookingRequestAdapter extends RecyclerView.Adapter<BookingRequestAd
         BookingRequest request = items.get(position);
         holder.title.setText(holder.itemView.getContext().getString(
                 R.string.booking_title,
-                request.getTravelerName(),
+                request.getTravelerId(),
                 request.getListingId()
         ));
         holder.dates.setText(holder.itemView.getContext().getString(
@@ -64,7 +70,7 @@ public class BookingRequestAdapter extends RecyclerView.Adapter<BookingRequestAd
 
         boolean pending = BookingRequest.STATUS_PENDING.equals(request.getStatus());
         
-        if (listener != null) {
+        if (listener != null && showActions) {
             holder.approve.setVisibility(View.VISIBLE);
             holder.reject.setVisibility(View.VISIBLE);
             holder.approve.setEnabled(pending);
@@ -75,6 +81,11 @@ public class BookingRequestAdapter extends RecyclerView.Adapter<BookingRequestAd
         } else {
             holder.approve.setVisibility(View.GONE);
             holder.reject.setVisibility(View.GONE);
+            if (listener != null) {
+                holder.itemView.setOnClickListener(v -> listener.onItemClick(request));
+            } else {
+                holder.itemView.setOnClickListener(null);
+            }
         }
     }
 
